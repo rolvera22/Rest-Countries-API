@@ -20,13 +20,16 @@
 <main class="container-fluid mt-5">
   <section class="row">
     <!-- Panel 1 -->
-    <div class="col-lg-3 col-md-6 mb-4">
+    <div class="col-lg-3 col-md-6 mb-4" *ngIf="data.length > 0">
       <div class="zonaBanderas d-flex justify-content-center">
         <div class="card" style="width: 19rem;">
-          <img src="https://flagcdn.com/w320/ps.png" class="card-img-top" alt="...">
+          <img [src]="data[0]?.flags.svg" class="card-img-top" alt="...">
           <div class="card-body">
             <ul class="list-group list-group-flush">
-            <li class="list-group-item">An item</li>
+            <li class="list-group-item"><h5>{{ data[0]?.name.common }}</h5></li>
+            <li class="list-group-item"><h6>Population: </h6>{{ data[0]?.population }}</li>
+            <li class="list-group-item"><h6>Region: </h6>{{ data[0]?.region }}</li>
+            <li class="list-group-item"><h6>Capital: </h6>{{ data[0]?.capital }}</li>
           </ul>
             </div>
           
@@ -44,7 +47,7 @@
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
           </div>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item">An item</li>
+            <li class="list-group-item">{{ data[1]?.name }}</li>
             <li class="list-group-item">A second item</li>
             <li class="list-group-item">A third item</li>
           </ul>
