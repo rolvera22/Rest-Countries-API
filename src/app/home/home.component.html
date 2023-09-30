@@ -20,80 +20,22 @@
 <main class="container-fluid mt-5">
   <section class="row">
     <!-- Panel 1 -->
-    <div class="col-lg-3 col-md-6 mb-4" *ngIf="data.length > 0">
+    <div class="col-lg-3 col-md-6 mb-4" *ngFor="let country of data">
       <div class="zonaBanderas d-flex justify-content-center">
         <div class="card" style="width: 19rem;">
-          <img [src]="data[0]?.flags.svg" class="card-img-top" alt="...">
+          <img [src]="country?.flags.svg" class="card-img-top" alt="...">
           <div class="card-body">
             <ul class="list-group list-group-flush">
-            <li class="list-group-item"><h5>{{ data[0]?.name.common }}</h5></li>
-            <li class="list-group-item"><h6>Population: </h6>{{ data[0]?.population }}</li>
-            <li class="list-group-item"><h6>Region: </h6>{{ data[0]?.region }}</li>
-            <li class="list-group-item"><h6>Capital: </h6>{{ data[0]?.capital }}</li>
+            <li class="list-group-item"><h5>{{ country?.name.common }}</h5></li>
+            <li class="list-group-item"><h6>Population: </h6>{{ country?.population }}</li>
+            <li class="list-group-item"><h6>Region: </h6>{{ country?.region }}</li>
+            <li class="list-group-item"><h6>Capital: </h6>{{ country?.capital }}</li>
           </ul>
             </div>
           
         </div>
       </div>
     </div>
-
-    <!-- Panel 2 -->
-    <div class="col-lg-3 col-md-6 mb-4">
-      <div class="zonaBanderas2 d-flex justify-content-center">
-        <div class="card" style="width: 19rem;">
-          <img src="..." class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">{{ data[1]?.name }}</li>
-            <li class="list-group-item">A second item</li>
-            <li class="list-group-item">A third item</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <!-- Panel 3 -->
-
-    <div class="col-lg-3 col-md-6 mb-4">
-      <div class="zonaBanderas3 d-flex justify-content-center">
-        <div class="card" style="width: 19rem;">
-          <img src="..." class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">An item</li>
-            <li class="list-group-item">A second item</li>
-            <li class="list-group-item">A third item</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <!-- Panel 4 -->
-
-    <div class="col-lg-3 col-md-6 mb-4">
-      <div class="zonaBanderas4 d-flex justify-content-center">
-        <div class="card" style="width: 19rem;">
-          <img src="..." class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">An item</li>
-            <li class="list-group-item">A second item</li>
-            <li class="list-group-item">A third item</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
   </section>
 </main>
 
-<!-- Codigo para traernos los datos de JSON -->
