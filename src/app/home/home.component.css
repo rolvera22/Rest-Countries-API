@@ -18,6 +18,14 @@
         width: 100%; /* Establece el ancho que desees, como por ejemplo "200px" */
         height: 200px; /* Esto asegura que la relación de aspecto de la imagen se mantenga */
         object-fit: fill;
+        
+      }
+
+
+      .card{
+
+        width: 100px;
+        
       }
 
       
