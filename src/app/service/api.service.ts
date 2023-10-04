@@ -16,13 +16,10 @@ export class ApiService {
     return this.http.get<any> (url);
   }
 
-  public getByName(): Observable<any>{
-    const url = `${this.urlApi}/name/{name}`;
+  public getByName(name:string): Observable<any>{
+    const url = `${this.urlApi}/name/${name}`;
     return this.http.get<any> (url);
   }
 
 
-
-
-  
 }

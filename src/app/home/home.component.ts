@@ -10,6 +10,7 @@ import { ApiService } from '../service/api.service';
 export class HomeComponent implements OnInit {
 
 data: any [] = [];
+filtroNombre: string = '';
 
   constructor(private apiService:ApiService) { }
 
@@ -24,5 +25,27 @@ data: any [] = [];
 
   })
   }
+
+  filtrarporNombre() {
+
+  if (this.filtroNombre.trim() !== '') {
+
+  this.apiService.getByName(this.filtroNombre).subscribe (data => {
+
+    this.data = data;
+    console.log (this.data);
+
+  })
+
+
+  }
+
+
+
+  }
+
+  
+
+
 
 }
