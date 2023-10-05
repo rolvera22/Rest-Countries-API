@@ -21,5 +21,10 @@ export class ApiService {
     return this.http.get<any> (url);
   }
 
+  public getByRegion(region:string): Observable<any>{
+    const url = `${this.urlApi}/region/${region}`;
+    return this.http.get<any> (url);
+  }
+
 
 }

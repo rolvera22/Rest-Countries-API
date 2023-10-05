@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-light d-flex align-items-center">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Where in the world</a>
+    <a class="navbar-brand" href="/">Where in the world</a>
     <div class="letter" id="navbarSupportedContent">
       <div class="form-check form-switch">
         <input
@@ -27,15 +27,17 @@
 </div>
 
 <div class="selector mb-3 pt-4 pe-5">
-  <select class="form-select form-select-lg" aria-label=".form-select-sm example">
-    <option selected>Filter by Region</option>
-    <option value="1">Africa</option>
-    <option value="2">America</option>
-    <option value="3">Asia</option>
-    <option value="3">Europe</option>
-    <option value="3">Oceania</option>
+  <select class="form-select form-select-lg" aria-label=".form-select-sm example" name="filtroAfrica" (change)="filtrarPorRegion()" [(ngModel)]="filtroAfrica">
+    <option selected disabled>Filter by Region</option>
+    <option value="Africa">Africa</option>
+    <!--  <option [(ngModel)]="filtroAmerica" value="America">America</option>
+    <option [(ngModel)]="filtroAsia" value="Asia">Asia</option>
+    <option [(ngModel)]="filtroEurope" value="Europe">Europe</option>
+    <option [(ngModel)]="filtroOceania" value="Oceania">Oceania</option>-->
   </select>
 </div>
+
+
 </section>
 
 
