@@ -11,11 +11,9 @@ export class HomeComponent implements OnInit {
 
 data: any [] = [];
 filtroNombre: string = '';
-  filtroAfrica: string = '';
-  filtroAmerica: string = '';
-  filtroAsia: string = '';
-  filtroEurope: string = '';
-  filtroOceania: string = '';
+continentes: string[] = ['Africa', 'America', 'Asia', 'Europe', 'Oceania'];
+isDarkMode: boolean = false;
+
 
   constructor(private apiService:ApiService) { }
 
@@ -26,8 +24,7 @@ filtroNombre: string = '';
   llenarData(){
   this.apiService.getData().subscribe(data => {
   this.data = data;
-  console.log(this.data);
-
+ 
   })
   }
 
@@ -45,41 +42,27 @@ filtroNombre: string = '';
   this.llenarData();
   }
 
-   }
-
-   filtrarPorRegion() {
-    console.log("si esta?")
-    // Implementa la lógica para filtrar según la opción seleccionada
-    if (this.filtroAfrica) {
-      this.apiService.getByRegion('Africa').subscribe(data => {
-        this.data = data;
-      });
-    /*  } else if (this.filtroAmerica) {
-      this.apiService.getByRegion('America').subscribe(data => {
-        this.data = data;
-      });
-    } else if (this.filtroAsia) {
-      this.apiService.getByRegion('Asia').subscribe(data => {
-        this.data = data;
-      });
-    } else if (this.filtroEurope) {
-      this.apiService.getByRegion('Europe').subscribe(data => {
-        this.data = data;
-      });
-    } else if (this.filtroOceania) {
-      this.apiService.getByRegion('Oceania').subscribe(data => {
-        this.data = data;
-      });*/
-    } 
   }
 
-  filtrarporZona(selectedValue: string) {
+  filtrarPorRegion(event: Event) {
+    const selectedValue = (event.target as HTMLSelectElement).value;
     if (selectedValue) {
       this.apiService.getByRegion(selectedValue).subscribe((data) => {
         this.data = data;
       });
     }
   }
-
   
+
+  /*  toggleDarkMode(event: Event): void {
+    const body = document.querySelector('body');
+    if (body) {
+      body.classList.toggle('dark-mode-body');
+    }
+  }*/
+
+  toggleDarkMode(event: Event): void {
+    this.isDarkMode = (event.target as HTMLInputElement).checked;
+  }
+    
 }

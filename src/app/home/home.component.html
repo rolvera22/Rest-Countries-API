@@ -1,65 +1,96 @@
-<nav class="navbar navbar-expand-lg bg-light d-flex align-items-center">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="/">Where in the world</a>
-    <div class="letter" id="navbarSupportedContent">
-      <div class="form-check form-switch">
-        <input
-          class="form-check-input"
-          type="checkbox"
-          role="switch"
-          id="flexSwitchCheckDefault"
-        />
-        <label class="form-check-label" for="flexSwitchCheckDefault"
-          >Dark Mode</label
-        >
-      </div>
-    </div>
-  </div>
-</nav>
-
-<section class="filters d-flex justify-content-space-between">
-
-<div class="input-group mb-3 pt-4">
-  <button class="btn btn-outline-secondary border-0 " type="button" id="button-addon1" (click)="filtrarporNombre()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-  </svg></button>
-  <input type="text" class="form-control-sm filtro" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1" [(ngModel)]="filtroNombre">
-</div>
-
-<div class="selector mb-3 pt-4 pe-5">
-  <select class="form-select form-select-lg" aria-label=".form-select-sm example" name="filtroAfrica" (change)="filtrarPorRegion()" [(ngModel)]="filtroAfrica">
-    <option selected disabled>Filter by Region</option>
-    <option value="Africa">Africa</option>
-    <!--  <option [(ngModel)]="filtroAmerica" value="America">America</option>
-    <option [(ngModel)]="filtroAsia" value="Asia">Asia</option>
-    <option [(ngModel)]="filtroEurope" value="Europe">Europe</option>
-    <option [(ngModel)]="filtroOceania" value="Oceania">Oceania</option>-->
-  </select>
-</div>
-
-
-</section>
-
-
-<main class="container-fluid mt-5">
-  <section class="row">
-    <!-- Panel 1 -->
-    <div class="col-lg-3 col-md-6 mb-4" *ngFor="let country of data">
-      <div class="zonaBanderas d-flex justify-content-center">
-        <div class="card" style="width: 19rem;">
-          <img [src]="country?.flags.svg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <ul class="list-group list-group-flush">
-            <li class="list-group-item"><h5>{{ country?.name.common }}</h5></li>
-            <li class="list-group-item"><h6>Population: </h6>{{ country?.population }}</li>
-            <li class="list-group-item"><h6>Region: </h6>{{ country?.region }}</li>
-            <li class="list-group-item"><h6>Capital: </h6>{{ country?.capital }}</li>
-          </ul>
-            </div>
-          
+<body [ngClass]="{ 'dark-mode-body': isDarkMode }">
+  <nav
+    class="navbar navbar-expand-lg d-flex align-items-center"
+    [ngClass]="{ 'navbar-dark': isDarkMode }"
+  >
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">Where in the world</a>
+      <div class="letter" id="navbarSupportedContent">
+        <!-- Dark Mode -->
+        <div class="form-check form-switch">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            role="switch"
+            id="flexSwitchCheckDefault"
+            (change)="toggleDarkMode($event)"
+          />
+          <label
+            class="form-check-label"
+            [ngClass]="{ 'white-text': isDarkMode }"
+            for="flexSwitchCheckDefault"
+            >Dark Mode</label
+          >
         </div>
       </div>
     </div>
-  </section>
-</main>
+  </nav>
+  
+  <div class="row filters">
 
+      <div class="col">
+        <div class="input-group mb-3 d-flex justify-content-start mt-3 ms-3">
+          <input
+            type="text"
+            class="form-control-sm filtro border rounded"
+            placeholder="Search a country"
+            aria-label="Example text with button addon"
+            aria-describedby="button-addon1"
+            [(ngModel)]="filtroNombre"
+            (input)="filtrarporNombre()"
+          />
+        </div>
+      </div>
+
+      <div class="col">
+        <div>
+          <div class="selector d-flex justify-content-end me-4 mt-3">
+            <select
+              class="form-select form-select-sm"
+              aria-label=".form-select-sm example"
+              (change)="filtrarPorRegion($event)"
+            >
+              <option class="FilterRegion">Filter by Region</option>
+              <option *ngFor="let continent of continentes" [value]="continent">
+                {{ continent }}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+    
+    </div>
+  
+
+  <main class="container-fluid mt-5">
+    <section class="row">
+      <!-- Panel 1 -->
+      <div class="col-lg-3 col-md-6 mb-4" *ngFor="let country of data">
+        <div class="zonaBanderas d-flex justify-content-center">
+          <div class="card">
+            <img [src]="country?.flags.svg" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                  <h5>{{ country?.name.common }}</h5>
+                </li>
+                <li class="list-group-item">
+                  <h6>Population:</h6>
+                  {{ country?.population }}
+                </li>
+                <li class="list-group-item">
+                  <h6>Region:</h6>
+                  {{ country?.region }}
+                </li>
+                <li class="list-group-item">
+                  <h6>Capital:</h6>
+                  {{ country?.capital }}
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
