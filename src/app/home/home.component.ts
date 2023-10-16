@@ -53,14 +53,6 @@ isDarkMode: boolean = false;
     }
   }
   
-
-  /*  toggleDarkMode(event: Event): void {
-    const body = document.querySelector('body');
-    if (body) {
-      body.classList.toggle('dark-mode-body');
-    }
-  }*/
-
   toggleDarkMode(event: Event): void {
     this.isDarkMode = (event.target as HTMLInputElement).checked;
   }
