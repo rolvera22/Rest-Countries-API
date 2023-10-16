@@ -108,5 +108,6 @@
       }
     }
   },
-  "defaultProject": "Rest-Countries-API"
+  "defaultProject": "Rest-Countries-API",
+  "Project-Name": "Rest-Countries-API"
 }
